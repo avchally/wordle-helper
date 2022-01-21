@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <title>Wordle Helper</title>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="wrapper-child" id="title-bar"><span></span><h1>WORDLE</h1><span>HELPER</span></div>
+        <div class="main-box">
+            <!-- <div class="wrapper-child empty-box"></div> -->
+            <div class="wrapper-child" id="play-container">
+                <div class="wrapper-child" id="play-menu-bar">
+                    <a id="reset-btn" href='#'>Reset</a>
+                    <a id="prev-row-btn" href='#'>Previous Row</a>
+                </div>
+                <div class="wrapper-child" id="play-space">
+                    <div class="letter-row">
+                        <div class="letter-box"></div>
+                        <div class="letter-box"></div>
+                        <div class="letter-box"></div>
+                        <div class="letter-box"></div>
+                        <div class="letter-box"></div>
+                    </div>
+                    <div class="letter-row">
+                        <div class="letter-box"></div>
+                        <div class="letter-box"></div>
+                        <div class="letter-box"></div>
+                        <div class="letter-box"></div>
+                        <div class="letter-box"></div>
+                    </div>
+                    <div class="letter-row">
+                        <div class="letter-box"></div>
+                        <div class="letter-box"></div>
+                        <div class="letter-box"></div>
+                        <div class="letter-box"></div>
+                        <div class="letter-box"></div>
+                    </div>
+                    <div class="letter-row">
+                        <div class="letter-box"></div>
+                        <div class="letter-box"></div>
+                        <div class="letter-box"></div>
+                        <div class="letter-box"></div>
+                        <div class="letter-box"></div>
+                    </div>
+                    <div class="letter-row">
+                        <div class="letter-box"></div>
+                        <div class="letter-box"></div>
+                        <div class="letter-box"></div>
+                        <div class="letter-box"></div>
+                        <div class="letter-box"></div>
+                    </div>
+                    <div class="letter-row">
+                        <div class="letter-box"></div>
+                        <div class="letter-box"></div>
+                        <div class="letter-box"></div>
+                        <div class="letter-box"></div>
+                        <div class="letter-box"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="wrapper-child side" id="results">
+                <div class="results-title">Results</div>
+                <div class="results-description">
+                    <p>List of possible words.</p>
+                    <p>Type a word and select your letters.</p>
+                    <p>Press enter to update.</p>
+                </div>
+                <div name="results" id="results-text" contenteditable readonly></div>
+                <!-- <textarea name="results" id="results-text" readonly></textarea> -->
+            </div>
+        </div>
+    </div>
+    <script src="js/script.js"></script>
+</body>
