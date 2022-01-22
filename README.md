@@ -1,6 +1,7 @@
 # Wordle Helper
 ![version](https://img.shields.io/badge/version-v0.1-informational)  
-A simple Wordle assistant that suggests words to try.
+A simple Wordle assistant that suggests words to try.  
+https://avchally.github.io/wordle-helper/  
 #### Progress
 ![50%](https://progress-bar.dev/50)
   
