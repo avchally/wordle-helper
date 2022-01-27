@@ -1,9 +1,10 @@
 document.addEventListener('keydown', (e) => {
     const data = document.querySelector('#play-space').dataset;
+    // const currentLetters = organizeLetters();
     if (e.keyCode <= 90 && e.keyCode >= 65 && data.currentLetter < data.maxLetters) {
         // A-Z
         e.key;
-        addLetter(e.key.toUpperCase());
+        addLetter(e.key.toUpperCase(), organizeLetters());
     } else if (e.keyCode == 8 && data.currentLetter > 0) {
         // Backspace
         removeLetter();
@@ -21,14 +22,12 @@ document.addEventListener('keydown', (e) => {
         writeToResults();
     }
     refreshRowVal();
-    // console.log(e.keyCode);
 });
 
 $('.letter-box').click((e) => {
     const elmtClasses = e.target.classList;
     const elmtRowNum = e.target.dataset.rowNum;
     const currentRow = document.querySelector('#play-space').dataset.currentRow;
-    // console.log(elmtClasses.value);
     if (elmtRowNum === currentRow) {
         if (elmtClasses.value === 'letter-box filled') {
             elmtClasses.add('incorrect-spot');
@@ -63,12 +62,24 @@ $('#prev-row-btn').click((e) => {
     document.activeElement.blur();
 });
 
-function addLetter(char) {
+function addLetter(char, currentLetters) {
+    // takes an uppercase character and adds it to the current row,
+    // and applies the appropriate class to the letter box
+    // currentLetters is an object of previous rows
     const data = document.querySelector('#play-space').dataset;
     const letterBox = document.querySelectorAll('.letter-row')[data.currentRow]
         .querySelectorAll('.letter-box')[data.currentLetter];
     letterBox.textContent = char;
     letterBox.classList.add('filled');
+    if (currentLetters.grey.includes(char)) { 
+        letterBox.classList.add('incorrect-letter');
+    }
+    currentLetters.green.forEach(([letter, index]) => {
+        if (letter === char && index === parseInt(data.currentLetter)) {
+            letterBox.classList.add('correct-spot');
+        }
+
+    })
     data.currentLetter++;
 }
 
@@ -92,17 +103,8 @@ function refreshRowVal() {
     rowElmt.value = rowStr;
 }
 
-// function getAllWords() {
-// const url = 'https://gist.githubusercontent.com/cfreshman/a03ef2cba789d8cf00c08f767e0fad7b/raw/a9e55d7e0c08100ce62133a1fa0d9c4f0f542f2c/wordle-answers-alphabetical.txt';
-// fetch(url).then((r) => {
-//     r.text().then((txt) => {
-//         allWords = txt.split('\n');
-//         console.log(allWords);
-//     });
-// });
-// }
-
 function writeToResults() {
+    // write the array of remaining words to the results div
     const resultsElmt = document.querySelector('#results-text');
     let wordsStr = '';
     remainingWords.forEach((word) => {
@@ -117,17 +119,14 @@ function getUserWords() {
     Array.from(document.querySelectorAll('.letter-row')).slice(0, data.currentRow).forEach((row) => {
         arr.push(row.value);
     });
-    console.log(arr);
 }
 
 function getUserLetters() {
-    // TODO
     const arr = [];
     const data = document.querySelector('#play-space').dataset;
     Array.from(document.querySelectorAll('.letter-row')).slice(0, data.currentRow).forEach((row) => {
         arr.push(row.value);
     });
-    console.log(arr);
 }
 
 function organizeLetters() {

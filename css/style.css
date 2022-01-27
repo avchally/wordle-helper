@@ -193,7 +193,7 @@ border-radius: 5px;
     background-color: #b59f3b;
 }
 
-#play-space .letter-box.row-done {
+#play-space .letter-box.row-done, #play-space .letter-box.filled.incorrect-letter {
     border: 0;
     background-color: #3A3A3C;
 }
