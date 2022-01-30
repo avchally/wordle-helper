@@ -9,5 +9,5 @@ https://avchally.github.io/wordle-helper/
 ## Main Features
 ✅ Finish the MVP  
 ✅ Auto update letter colors on subsequent rows  
-⬜️ Add keyboard for mobile users
+⬜️ Add keyboard for mobile users  
 ⬜️ Put SVG icons as Reset and Previous Row links  
